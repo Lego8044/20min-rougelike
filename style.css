@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+#game-container {
+    display: block;
+    margin: 0 auto;
+}
