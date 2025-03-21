@@ -20,6 +20,8 @@ var bulletTime = 0;
 var game = new Phaser.Game(config);
 
 function preload() {
+    console.log("Loading assets...");
+
     // Load placeholder assets (player and zombie)
     this.load.image('player', 'https://via.placeholder.com/32/FFFFFF/000000?text=P');
     this.load.image('zombie', 'https://via.placeholder.com/32/FF0000/000000?text=Z');
@@ -27,6 +29,8 @@ function preload() {
 }
 
 function create() {
+    console.log("Game Loaded");
+
     // Player setup
     player = this.physics.add.image(400, 300, 'player').setOrigin(0.5, 0.5);
     player.setCollideWorldBounds(true);
