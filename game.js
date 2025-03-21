@@ -22,21 +22,24 @@ var game = new Phaser.Game(config);
 function preload() {
     console.log("Loading assets...");
 
-    // Load local assets from the repository
-    this.load.image('player', 'player.png');
-    this.load.image('zombie', 'zombie.png');
-    this.load.image('bullet', 'bullet.png');
-}
+    // Load local assets from the repository (ensure these files are uploaded to GitHub)
+    this.load.image('player', 'player.png');  // Replace with your player image filename
+    this.load.image('zombie', 'zombie.png');  // Replace with your zombie image filename
+    this.load.image('bullet', 'bullet.png');  // Replace with your bullet image filename
 }
 
 function create() {
+    console.log("Phaser Version: " + Phaser.VERSION);
     console.log("Game Loaded");
+
+    // Add a simple background color to see the game area
+    this.cameras.main.setBackgroundColor('#000000');
 
     // Player setup
     player = this.physics.add.image(400, 300, 'player').setOrigin(0.5, 0.5);
     player.setCollideWorldBounds(true);
 
-    // Bullet group
+    // Bullet group setup
     bullets = this.physics.add.group({
         defaultKey: 'bullet',
         maxSize: 10
@@ -45,11 +48,13 @@ function create() {
     // Controls
     cursors = this.input.keyboard.createCursorKeys();
 
-    // Create a few zombies
+    // Create zombies (we will use simple random positioning for now)
     for (var i = 0; i < 5; i++) {
         var zombie = this.physics.add.image(Phaser.Math.Between(100, 700), Phaser.Math.Between(100, 500), 'zombie');
         zombies.push(zombie);
     }
+
+    console.log("Player and Zombies Created");
 }
 
 function update() {
@@ -76,6 +81,7 @@ function update() {
     }, this);
 }
 
+// Bullet firing function
 function fireBullet() {
     if (game.time.now > bulletTime) {
         var bullet = bullets.get(player.x, player.y);
