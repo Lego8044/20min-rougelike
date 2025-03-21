@@ -32,8 +32,8 @@ function create() {
     console.log("Phaser Version: " + Phaser.VERSION);
     console.log("Game Loaded");
 
-    // Add a simple background color to see the game area
-    this.cameras.main.setBackgroundColor('#000000');
+    // Set the background color to white
+    this.cameras.main.setBackgroundColor('#ffffff');
 
     // Player setup
     player = this.physics.add.image(400, 300, 'player').setOrigin(0.5, 0.5);
