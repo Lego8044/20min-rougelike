@@ -22,10 +22,11 @@ var game = new Phaser.Game(config);
 function preload() {
     console.log("Loading assets...");
 
-    // Load placeholder assets (player and zombie)
-    this.load.image('player', 'https://via.placeholder.com/32/FFFFFF/000000?text=P');
-    this.load.image('zombie', 'https://via.placeholder.com/32/FF0000/000000?text=Z');
-    this.load.image('bullet', 'https://via.placeholder.com/8/FFFFFF/000000?text=•');
+    // Load local assets from the repository
+    this.load.image('player', 'player.png');
+    this.load.image('zombie', 'zombie.png');
+    this.load.image('bullet', 'bullet.png');
+}
 }
 
 function create() {
