@@ -1,4 +1,3 @@
-// Phaser 3 Game Setup
 var config = {
     type: Phaser.AUTO,
     width: 800,
@@ -21,8 +20,6 @@ var game = new Phaser.Game(config);
 
 function preload() {
     console.log("Loading assets...");
-
-    // Load local assets from the repository (ensure these files are uploaded to GitHub)
     this.load.image('player', 'player.png');  // Replace with your player image filename
     this.load.image('zombie', 'zombie.png');  // Replace with your zombie image filename
     this.load.image('bullet', 'bullet.png');  // Replace with your bullet image filename
@@ -32,6 +29,16 @@ function create() {
     console.log("Phaser Version: " + Phaser.VERSION);
     console.log("Game Loaded");
 
+    // Debugging to see if `this` is correct
+    console.log(this);  // Check if `this` is the Phaser scene context
+    console.log(this.add);  // Check if `this.add` exists
+
+    // Check if scene is fully loaded
+    if (this.add === undefined) {
+        console.error("Phaser scene context is not initialized properly.");
+        return;
+    }
+
     // Set the background color to white
     this.cameras.main.setBackgroundColor('#ffffff');
 
@@ -40,7 +47,7 @@ function create() {
     player.setCollideWorldBounds(true);
 
     // Bullet group setup
-    bullets = this.physics.add.group({  // Use this.physics.add.group() for physics-enabled group
+    bullets = this.physics.add.group({
         defaultKey: 'bullet',
         maxSize: 10
     });
