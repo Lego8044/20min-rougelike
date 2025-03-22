@@ -40,7 +40,7 @@ function create() {
     player.setCollideWorldBounds(true);
 
     // Bullet group setup
-    bullets = this.physics.add.group({
+    bullets = this.add.group({ // Corrected context to use this.add instead of this.physics.add
         defaultKey: 'bullet',
         maxSize: 10
     });
